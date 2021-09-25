@@ -7,7 +7,7 @@
 
 	<groupId>dev.pauloribeiro.cepcorreios</groupId>
 	<artifactId>cepcorreios</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 
 	<name>cepcorreios</name>
 	<description>
@@ -51,6 +51,11 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
+						<!-- 
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+						-->
 						<version>1.6</version>
 						<executions>
 							<execution>
