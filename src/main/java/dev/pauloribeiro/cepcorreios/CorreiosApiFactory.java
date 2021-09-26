@@ -5,7 +5,7 @@ public final class CorreiosApiFactory {
 	private CorreiosApiFactory() {
 	}
 
-	public static CorreiosApi correiosApi() {
+	public static CorreiosApi get() {
 		return new CorreiosApiImpl();
 	}
 }

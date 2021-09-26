@@ -79,4 +79,10 @@ public class CepCorreio {
 	public String getNomeUnidade() {
 		return nomeUnidade;
 	}
+
+	@Override
+	public String toString() {
+		return "CepCorreio [cep=" + cep + ", estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro
+				+ ", logradouro=" + logradouro + ", complemento=" + complemento + ", nomeUnidade=" + nomeUnidade + "]";
+	}
 }
