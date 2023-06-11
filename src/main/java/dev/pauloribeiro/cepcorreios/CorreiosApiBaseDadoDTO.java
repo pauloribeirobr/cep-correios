@@ -11,6 +11,7 @@ public class CorreiosApiBaseDadoDTO {
 	private String bairro;
 	private String cep;
 	private String nomeUnidade;
+	private String localidadeSubordinada;
 	/**
 	 * @return the uf
 	 */
@@ -83,4 +84,11 @@ public class CorreiosApiBaseDadoDTO {
 	public void setNomeUnidade(String nomeUnidade) {
 		this.nomeUnidade = nomeUnidade;
 	}
+	public String getLocalidadeSubordinada() {
+		return localidadeSubordinada;
+	}
+	public void setLocalidadeSubordinada(String localidadeSubordinada) {
+		this.localidadeSubordinada = localidadeSubordinada;
+	}
+	
 }

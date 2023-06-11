@@ -35,8 +35,8 @@ public class CorreiosApiImpl implements CorreiosApi {
 					CepCorreio cep = new CepCorreio(
 							dados.getCep(), 
 							dados.getUf(), 
-							dados.getLocalidade(), 
-							dados.getBairro(), 
+							(dados.getLocalidadeSubordinada().isEmpty() ? dados.getLocalidade() : dados.getLocalidadeSubordinada()), 
+							(dados.getLocalidadeSubordinada().isEmpty() ? dados.getBairro() : dados.getLocalidadeSubordinada()), 
 							logradouro.getLogradouro(),
 							logradouro.getComplemento(),
 							dados.getNomeUnidade());
