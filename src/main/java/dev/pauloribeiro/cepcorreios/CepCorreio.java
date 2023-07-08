@@ -9,6 +9,7 @@ public class CepCorreio {
 	private String logradouro;
 	private String complemento;
 	private String nomeUnidade;
+	private String tipoCep;
 	
 	/**
 	 * @param cep
@@ -18,9 +19,10 @@ public class CepCorreio {
 	 * @param logradouro
 	 * @param complemento
 	 * @param nomeUnidade
+	 * @param tipoCep
 	 */
 	public CepCorreio(String cep, String estado, String cidade, String bairro, String logradouro, String complemento,
-			String nomeUnidade) {
+			String nomeUnidade, String tipoCep) {
 		super();
 		this.cep = cep;
 		this.estado = estado;
@@ -29,6 +31,7 @@ public class CepCorreio {
 		this.logradouro = logradouro;
 		this.complemento = complemento;
 		this.nomeUnidade = nomeUnidade;
+		this.tipoCep = tipoCep;
 	}
 
 	/**
@@ -80,9 +83,17 @@ public class CepCorreio {
 		return nomeUnidade;
 	}
 
+	/**
+	 * @return the tipoCep
+	 */
+	public String getTipoCep() {
+		return tipoCep;
+	}
+
 	@Override
 	public String toString() {
 		return "CepCorreio [cep=" + cep + ", estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro
-				+ ", logradouro=" + logradouro + ", complemento=" + complemento + ", nomeUnidade=" + nomeUnidade + "]";
+				+ ", logradouro=" + logradouro + ", complemento=" + complemento + ", nomeUnidade=" + nomeUnidade
+				+ ", tipoCep=" + tipoCep + "]";
 	}
 }

@@ -13,7 +13,7 @@ class CorreiosApiImplTest {
 	@Test
 	void testCepCorreios() throws InterruptedException {
 		
-		CepCorreio dtoResponse = new CepCorreio("01046010","SP","São Paulo","República","Avenida Ipiranga","- até 399/400","");
+		CepCorreio dtoResponse = new CepCorreio("01046010","SP","São Paulo","República","Avenida Ipiranga","- até 399/400","","");
 		
 		List<CepCorreio> response = correiosApi.getCep("01046010");
 		

@@ -12,6 +12,8 @@ public class CorreiosApiBaseDadoDTO {
 	private String cep;
 	private String nomeUnidade;
 	private String localidadeSubordinada;
+	private String tipoCep;	//2 - Comum | 5 - Grande Usuário
+	
 	/**
 	 * @return the uf
 	 */
@@ -90,5 +92,10 @@ public class CorreiosApiBaseDadoDTO {
 	public void setLocalidadeSubordinada(String localidadeSubordinada) {
 		this.localidadeSubordinada = localidadeSubordinada;
 	}
-	
+	public String getTipoCep() {
+		return tipoCep;
+	}
+	public void setTipoCep(String tipoCep) {
+		this.tipoCep = tipoCep;
+	}
 }

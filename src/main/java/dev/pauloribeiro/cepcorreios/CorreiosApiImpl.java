@@ -39,7 +39,8 @@ public class CorreiosApiImpl implements CorreiosApi {
 							(dados.getLocalidadeSubordinada().isEmpty() ? dados.getBairro() : dados.getLocalidadeSubordinada()), 
 							logradouro.getLogradouro(),
 							logradouro.getComplemento(),
-							dados.getNomeUnidade());
+							dados.getNomeUnidade(),
+							dados.getTipoCep());
 					ceps.add(cep);					
 				}
 			}
