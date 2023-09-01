@@ -10,7 +10,7 @@ Insira essa configuração dentro do seu arquivo **pom.xml**
 <dependency>
   <groupId>dev.pauloribeiro.cepcorreios</groupId>
   <artifactId>cepcorreios</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
