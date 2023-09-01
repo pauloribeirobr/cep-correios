@@ -32,15 +32,51 @@ public class CorreiosApiImpl implements CorreiosApi {
 				
 				if(dados.getCep().startsWith(cepPesquisa)) {
 					LogradouroFormatadoDTO logradouro = logradouroSplit(dados.getLogradouroDNEC());
+					String cidade = "";
+					String bairro = "";
+					//tipoCep = 1 - Comum (mas municipios sem CEP)
+					//tipoCep = 5 - Agência Click e Retire
+					//tipoCep = 6 - Grande Usuário - Agência dos Correios
+					
+					//tipoCep = 1
+					if(dados.getTipoCep().equals("1")) {
+						if(dados.getBairro().trim().isEmpty() && dados.getLocalidadeSubordinada().trim().isEmpty()) {
+							cidade = dados.getLocalidade();
+							bairro = "";
+						}else {
+							cidade = dados.getLocalidadeSubordinada();
+							if(dados.getBairro().trim().isEmpty()) {
+								bairro = dados.getLocalidade();
+							}else {
+								bairro = dados.getBairro();
+							}							
+						}
+					}else {
+						if(dados.getLocalidadeSubordinada().trim().isEmpty()) {
+							cidade = dados.getLocalidade();
+							bairro = dados.getBairro();
+						}else {
+							cidade = dados.getLocalidadeSubordinada();
+							bairro = dados.getLocalidade();
+						}
+					}
+
+					//if(dados.getTipoCep().equals("5") || dados.getTipoCep().equals("6")) {
+
+					//}
+					
+					
+					
 					CepCorreio cep = new CepCorreio(
 							dados.getCep(), 
 							dados.getUf(), 
-							(dados.getLocalidadeSubordinada().isEmpty() ? dados.getLocalidade() : dados.getLocalidadeSubordinada()), 
-							(dados.getLocalidadeSubordinada().isEmpty() ? dados.getBairro() : dados.getLocalidadeSubordinada()), 
+							cidade, 
+							bairro, 
 							logradouro.getLogradouro(),
 							logradouro.getComplemento(),
 							dados.getNomeUnidade(),
 							dados.getTipoCep());
+					System.out.println(cep.toString());
 					ceps.add(cep);					
 				}
 			}
@@ -71,7 +107,7 @@ public class CorreiosApiImpl implements CorreiosApi {
 			
 			Map<String,String> map = new HashMap<>();
 			map.put("pagina", "/app/endereco/index.php");
-	        map.put("cpaux", "");
+	        map.put("cepaux", "");
 	        map.put("mensagem_alerta", "");
 	        map.put("endereco", cepPesquisa);
 	        map.put("tipoCEP", "ALL");
@@ -87,6 +123,9 @@ public class CorreiosApiImpl implements CorreiosApi {
 			
 			http.setFixedLengthStreamingMode(length);
 			http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			http.setRequestProperty("authority", "buscacepinter.correios.com.br");
+			http.setRequestProperty("origin", "https://buscacepinter.correios.com.br");
+			http.setRequestProperty("referer", "https://buscacepinter.correios.com.br/app/endereco/index.php");
 			http.connect();
 			try(OutputStream outputStream = http.getOutputStream()) {
 			    outputStream.write(output);
