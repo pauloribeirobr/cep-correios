@@ -157,6 +157,22 @@ public class CorreiosApiImpl implements CorreiosApi {
 		
 		Pattern pattern;
 		Matcher matcher;
+
+		//Rua 1
+		//CLN 102
+		pattern = Pattern.compile("^[a-zA-ZçÇ]+\\s+\\d+$");
+		matcher = pattern.matcher(logradouro);
+		if (matcher.find()) {
+			return new LogradouroFormatadoDTO(matcher.group(0).trim(), matcher.replaceFirst("").trim());
+		}
+		
+		//CLN 102 Bloco A
+		pattern = Pattern.compile("^([a-zA-ZçÇ]+\\s+\\d+)(\\s+\\w+\\s+\\w+)$");
+		matcher = pattern.matcher(logradouro);
+		if (matcher.find()) {
+			return new LogradouroFormatadoDTO(matcher.group(1).trim(), matcher.group(2).trim());
+		}
+		
 		
 		// Praça do Correio s/n
 		pattern = Pattern.compile("s/n$");
